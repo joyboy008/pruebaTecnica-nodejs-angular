@@ -1,0 +1,12 @@
+# Ignorar node_modules de ambos proyectos
+back-end/node_modules/
+front-end/node_modules/
+
+# Opcional: ignorar archivos de sistema y temporales
+.env
+*.log
+dist/
+build/
+.DS_Store
+*.sqlite
+*.db
