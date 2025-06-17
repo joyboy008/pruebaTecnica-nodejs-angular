@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <div class="form-container">
+    <form (ngSubmit)="registrar()">
+      <ion-item lines="none">
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input [(ngModel)]="username" name="username" required></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" class="ion-margin-top">Registrar</ion-button>
+    </form>
+
+    <p class="ion-text-center ion-margin-top">{{ mensaje }}</p>
+  </div>
+</ion-content>

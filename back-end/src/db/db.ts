@@ -46,7 +46,6 @@ db.serialize(() => {
       FOREIGN KEY (grade_id) REFERENCES grades(id)
     )
   `);
-
   // Insertar grados si no existen
   db.all("SELECT COUNT(*) AS count FROM grades", (err, rows) => {
     if (err) {
@@ -56,7 +55,9 @@ db.serialize(() => {
 
     const result = rows as { count: number }[];
     if (result[0].count === 0) {
-      db.run(`INSERT INTO grades (name) VALUES ('1ro'), ('2do'), ('3ro')`);
+      db.run(
+        `INSERT INTO grades (name) VALUES ('1ro'), ('2do'), ('3ro'), ('4to'), ('5to'), ('6to')`
+      );
     }
   });
 });

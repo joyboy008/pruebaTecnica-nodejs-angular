@@ -1,0 +1,54 @@
+<div class="container mt-4">
+  <h2>Crear Estudiante</h2>
+
+  <form (ngSubmit)="crearEstudiante()" #form="ngForm">
+    <div class="mb-3">
+      <label for="student_name" class="form-label">Nombre del estudiante</label>
+      <input type="text" id="student_name" class="form-control" [(ngModel)]="student.student_name" name="student_name"
+        required />
+    </div>
+
+    <div class="mb-3">
+      <label for="birth_date" class="form-label">Fecha de nacimiento</label>
+      <input type="date" id="birth_date" class="form-control" [(ngModel)]="student.birth_date" name="birth_date"
+        required />
+    </div>
+
+    <div class="mb-3">
+      <label for="father_name" class="form-label">Nombre del padre</label>
+      <input type="text" id="father_name" class="form-control" [(ngModel)]="student.father_name" name="father_name"
+        required />
+    </div>
+
+    <div class="mb-3">
+      <label for="mother_name" class="form-label">Nombre de la madre</label>
+      <input type="text" id="mother_name" class="form-control" [(ngModel)]="student.mother_name" name="mother_name"
+        required />
+    </div>
+
+    <div class="mb-3">
+      <label for="grade_id" class="form-label">Grado</label>
+      <select id="grade_id" class="form-select" [(ngModel)]="student.grade_id" name="grade_id" required>
+        <option value="" disabled selected>Seleccione un grado</option>
+        <option *ngFor="let grade of grades" [value]="grade.id">
+          {{ grade.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="section" class="form-label">Sección</label>
+      <input type="text" id="section" class="form-control" [(ngModel)]="student.section" name="section" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="admission_date" class="form-label">Fecha de admisión</label>
+      <input type="date" id="admission_date" class="form-control" [(ngModel)]="student.admission_date"
+        name="admission_date" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Crear</button>
+
+    <p class="mt-3 text-success" *ngIf="message">{{ message }}</p>
+  </form>
+</div>

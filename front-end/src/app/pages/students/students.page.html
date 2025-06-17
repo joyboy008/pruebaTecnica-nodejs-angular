@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="mb-3">
+    <label for="grade">Grado:</label>
+    <select id="grade" [(ngModel)]="gradeId" class="form-select">
+      <option *ngFor="let grade of grades" [value]="grade.id">
+        {{ grade.name }}
+      </option>
+    </select>
+    <button class="btn btn-primary mt-2" (click)="buscarEstudiantes()">
+      Buscar
+    </button>
+  </div>
+
+  <div *ngIf="students.length > 0">
+    <h5>Listado de Alumnos:</h5>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let s of students">
+        {{ s.student_name }} - {{ s.section }}
+      </li>
+    </ul>
+  </div>
+</ion-content>

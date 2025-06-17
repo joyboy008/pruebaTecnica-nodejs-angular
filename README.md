@@ -1,98 +1,100 @@
-# 📚 Prueba Técnica Node.js + TypeScript
+# Sistema de Gestión de Estudiantes
 
-Este proyecto es una API REST construida con **Express**, **SQLite** y **TypeScript**, siguiendo buenas prácticas de arquitectura (controladores, servicios, middlewares). Incluye autenticación con JWT, encriptación de contraseñas con bcrypt y documentación con Swagger.
+Este proyecto es una aplicación completa para registrar y consultar estudiantes por grado académico. Está dividido en dos partes: un backend con Node.js y TypeScript, y un frontend con Angular + Ionic. Ambos módulos están desacoplados pero funcionan en conjunto mediante una API con autenticación JWT.
 
----
+## 📁 Estructura del Proyecto
 
-## 🚀 Rutas disponibles
+```
+/raiz-del-proyecto/
+│
+├── backend/
+│   └── README.md          # Instrucciones específicas del backend
+│   └── src/
+│       └── controllers/
+│       └── routes/
+│       └── middlewares/
+│       └── database/
+│       └── app.ts
+│
+├── frontend/
+│   └── README.md          # Instrucciones específicas del frontend
+│   └── src/
+│       └── app/
+│       └── assets/
+│       └── environments/
+│
+└── README.md              # Este archivo
+```
 
-### 🔐 Autenticación
+## 🚀 Tecnologías Utilizadas
 
-- **POST** `/auth/register`  
-  Crea un nuevo usuario.  
-  Requiere:
+- **Backend:**
 
-  ```json
-  {
-    "username": "usuario",
-    "password": "clave"
-  }
-  ```
+  - Node.js + Express
+  - TypeScript
+  - JWT (Autenticación)
+  - Bcrypt (Hash de contraseñas)
+  - SQLite (Base de datos ligera)
 
-- **POST** `/auth/login`  
-  Autentica al usuario y retorna un token JWT.  
-  Requiere los mismos campos que el registro.
+- **Frontend:**
+  - Angular 17
+  - Ionic Framework
+  - Bootstrap (solo algunos estilos)
+  - Angular Router
+  - Servicios HTTP y LocalStorage para manejo de sesión
 
----
+## ✅ Funcionalidades
 
-### 🎓 Estudiantes
+### Backend:
 
-- **GET** `/consultar-alumno/{grade_id}`  
-  Lista los estudiantes asignados a un grado (por ID numérico).
+- Registro e inicio de sesión de usuarios
+- Middleware para autenticación con JWT
+- Crear estudiante
+- Consultar estudiantes por `grade_id`
 
-- **POST** `/crear-alumno`  
-  Crea un nuevo estudiante.  
-  Requiere autenticación con JWT.  
-  Payload:
-  ```json
-  {
-    "student_name": "Nombre del estudiante",
-    "birth_date": "YYYY-MM-DD",
-    "father_name": "Nombre del padre",
-    "mother_name": "Nombre de la madre",
-    "grade_id": 1,
-    "section": "A",
-    "admission_date": "YYYY-MM-DD"
-  }
-  ```
+### Frontend:
 
----
+- Registro e inicio de sesión
+- Manejo de sesión y rutas protegidas
+- Formulario para crear estudiantes
+- Consultar estudiantes por grado (select con 6 opciones)
+- Visualización de mensajes de éxito y error
 
-## 🛠️ Instalación
+## 🛠️ Instalación y Ejecución
+
+### Backend
 
 ```bash
-git clone https://github.com/joyboy008/pruebaTecnica-nodejs-angular.git
-cd pruebaTecnica-nodejs-angular.git/back-end
+cd backend
 npm install
 npm run dev
 ```
 
-La API estará corriendo en:  
-👉 `http://localhost:4000`
+- Puerto por defecto: `http://localhost:4000`
+- Endpoints principales:
+  - `POST /auth/register`
+  - `POST /auth/login`
+  - `POST /crear-alumno` (protegido con JWT)
+  - `GET /consultar-alumno/:grade_id` (protegido con JWT)
 
----
+### Frontend
 
-## 📄 Documentación Swagger
-
-Disponible en:  
-🔗 `http://localhost:4000/api-docs`
-
----
-
-## 🔒 Seguridad
-
-- Contraseñas encriptadas con **bcrypt**.
-- Protección de rutas mediante **JWT**.
-- Validación de datos con middlewares.
-
----
-
-## 🧪 Pruebas
-
-Las pruebas unitarias y de integración serán implementadas en una siguiente fase del desarrollo.
-
----
-
-## 📂 Estructura del proyecto
-
+```bash
+cd frontend
+npm install
+ionic serve
 ```
-back-end/
-├── controllers/
-├── middleware/
-├── routes/
-├── services/
-├── types/
-├── docs/          # Swagger
-├── db/
-├── index.ts
-```
+
+- Acceso vía navegador: `http://localhost:5173` (o puerto asignado por Vite)
+
+## 🔐 Autenticación
+
+- Al iniciar sesión, se guarda el JWT en `localStorage`.
+- Las rutas protegidas se muestran solo si hay token presente.
+- Se añade el token en el encabezado `Authorization: Bearer <token>` para las peticiones protegidas.
+
+## ✍️ Autor
+
+**Marlon Ralda**  
+Desarrollador Fullstack | Seguridad Informática
+Prueba técnica
