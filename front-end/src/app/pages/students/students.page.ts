@@ -6,6 +6,7 @@ import { StudentService } from 'src/app/services/student.service';
   selector: 'app-students',
   templateUrl: './students.page.html',
   standalone: false,
+  styleUrls: ['./students.page.scss'],
 })
 export class StudentsPage {
   gradeId = '1';

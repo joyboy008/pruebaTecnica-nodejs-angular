@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,16 +12,28 @@ export class RegisterPage {
   password = '';
   mensaje = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  get passwordValida(): boolean {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    return regex.test(this.password);
+  }
 
   registrar() {
+    if (!this.passwordValida) {
+      this.mensaje = 'La contraseña no cumple con los requisitos de seguridad.';
+      return;
+    }
+
     this.authService.register(this.username, this.password).subscribe({
       next: () => {
-        this.mensaje = 'Usuario registrado exitosamente ✅';
+        this.mensaje = 'Usuario registrado correctamente ✅';
+        this.username = '';
+        this.password = '';
+        this.router.navigate(['/login']);
       },
-      error: (err: any) => {
-        console.error(err);
-        this.mensaje = 'Error al registrar el usuario ❌';
+      error: () => {
+        this.mensaje = 'El usuario ya existe o ocurrió un error ❌';
       },
     });
   }

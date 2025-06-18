@@ -1,0 +1,81 @@
+.estudiantes-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ===== Tabla de alumnos ===== */
+.table {
+  background-color: #ffffff;
+  max-width: 800px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+  border: none;
+
+  thead {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #e0e2e4;
+  }
+
+  th,
+  td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  tbody tr:hover {
+    background-color: #f1f3f5;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.table-student {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ===== Sección del buscador ===== */
+.select-busqueda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  select {
+    border-radius: 8px;
+    padding: 0.5rem;
+    font-size: 15px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+  }
+
+  button {
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+}
+
+/* ===== Mensaje cuando no hay datos ===== */
+.sin-alumnos {
+  color: #d6dadd;
+  font-style: italic;
+  text-align: center;
+  margin-top: 1rem;
+}

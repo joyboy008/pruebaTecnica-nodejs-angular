@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-create-student',
   templateUrl: './create-student.component.html',
+  styleUrls: ['./create-student.component.scss'],
   standalone: false,
 })
 export class CreateStudentComponent {

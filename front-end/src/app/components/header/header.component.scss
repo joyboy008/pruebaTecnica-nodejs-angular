@@ -1,0 +1,18 @@
+.navbar .nav-link {
+  cursor: pointer;
+  transition: color 0.2s ease;
+  color: white;
+}
+
+.navbar .nav-link:hover {
+  color: #34b358; /* color de hover opcional */
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+a:hover {
+  color: whitesmoke;
+}

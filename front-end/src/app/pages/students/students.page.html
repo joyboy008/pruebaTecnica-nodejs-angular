@@ -5,24 +5,49 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="mb-3">
-    <label for="grade">Grado:</label>
-    <select id="grade" [(ngModel)]="gradeId" class="form-select">
-      <option *ngFor="let grade of grades" [value]="grade.id">
-        {{ grade.name }}
-      </option>
-    </select>
-    <button class="btn btn-primary mt-2" (click)="buscarEstudiantes()">
-      Buscar
-    </button>
-  </div>
+  <div class="estudiantes-page">
+    <div class="mb-3 select-busqueda">
+      <label for="grade">Grado</label>
+      <select id="grade" [(ngModel)]="gradeId" class="form-select">
+        <option *ngFor="let grade of grades" [value]="grade.id">
+          {{ grade.name }}
+        </option>
+      </select>
+      <button class="btn btn-success mt-2" (click)="buscarEstudiantes()">
+        Buscar
+      </button>
+    </div>
 
-  <div *ngIf="students.length > 0">
-    <h5>Listado de Alumnos:</h5>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let s of students">
-        {{ s.student_name }} - {{ s.section }}
-      </li>
-    </ul>
+    <div *ngIf="students.length > 0" class="table-responsive table-student">
+      <h5>Listado de Alumnos</h5>
+      <table class="table table-hover table-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha Nac.</th>
+            <th>Padre</th>
+            <th>Madre</th>
+            <th>Grado</th>
+            <th>Sección</th>
+            <th>Ingreso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of students">
+            <td>{{ s.student_name }}</td>
+            <td>{{ s.birth_date | date:'dd-MM-yyyy' }}</td>
+            <td>{{ s.father_name }}</td>
+            <td>{{ s.mother_name }}</td>
+            <td>{{ s.grade_id }}</td>
+            <td>{{ s.section }}</td>
+            <td>{{ s.admission_date | date: 'dd-MM-yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="students.length === 0" class="mt-4">
+      No hay alumnos para este grado.
+    </div>
   </div>
 </ion-content>

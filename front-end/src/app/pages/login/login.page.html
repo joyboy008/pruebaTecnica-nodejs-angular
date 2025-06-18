@@ -17,7 +17,12 @@
         <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
       </ion-item>
 
-      <ion-button expand="block" type="submit" class="ion-margin-top">Ingresar</ion-button>
+      <ion-text color="danger" *ngIf="password && !passwordValida" style="font-size: 13px;">
+        <p class="ion-margin-top">La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un
+          número y un símbolo.</p>
+      </ion-text>
+
+      <ion-button expand="block" type="submit" [disabled]="!passwordValida" class="ion-margin-top">Ingresar</ion-button>
     </form>
 
     <p class="ion-text-center ion-margin-top">{{ mensaje }}</p>
